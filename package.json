@@ -1,0 +1,27 @@
+{
+  "name": "@mattplays/overwatch-api",
+  "version": "0.0.1",
+  "description": "This package is a wrapper for the unofficial Overwatch API",
+  "main": "OverwatchAPI.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MattPlays/OverwatchAPI.git"
+  },
+  "keywords": [
+    "Overwatch",
+    "API",
+    "GameAPICenter"
+  ],
+  "author": "MattPlays (https://github.com/MattPlays/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MattPlays/OverwatchAPI/issues"
+  },
+  "homepage": "https://github.com/MattPlays/OverwatchAPI#readme",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  }
+}
