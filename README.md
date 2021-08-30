@@ -23,16 +23,16 @@ This package is a wrapper for the unofficial Overwatch API
 **This is an Unoffical API** [Unoffical Docs](https://ow-api.com/docs/)
 ### Usage <a id="overwatch-usage">
 ```javascript
-const GameAPICenter = require("gameapicenter");
-const OverwatchAPI = new GameAPICenter.OverwatchAPI();
+const {OverwatchAPI} = require("@mattplays/overwatch-api")
+const API = new OverwatchAPI();
 ```
 ### Functions <a id="overwatch-functions">
 #### GetProfile <a id="overwatch-getprofile">
 This endpoint retrieves stats commonly used by bots and other services.
 ##### Inputs <a id="overwatch-getprofile-inputs">
 ```typescript
-export type OverwatchPlatform = "pc" | "xbox" | "ps4" | "nintendo-switch";
-export type OverwatchRegion = "us" | "eu" | "asia";
+type OverwatchPlatform = "pc" | "xbox" | "ps4" | "nintendo-switch";
+type OverwatchRegion = "us" | "eu" | "asia";
 ```
 | Parameter  | Type | Required | Description |
 | ------------- | ------------- | ------------- | ------------- |
@@ -43,16 +43,16 @@ export type OverwatchRegion = "us" | "eu" | "asia";
 The GetProfile function returns a `Promise<OverwatchProfile>`
 ##### Usage <a id="overwatch-getprofile-usage">
 ```javascript
-const OverwatchAPI = new GameAPICenter.OverwatchAPI();
-OverwatchAPI.GetProfile("pc", "us", "My_Name_Is_Jeff_From_The_OW_Team#11561").then((data) => {
+const API = new OverwatchAPI();
+API.GetProfile("pc", "us", "My_Name_Is_Jeff_From_The_OW_Team#11561").then((data) => {
 // Your Code Here :D
 })
 ```
 #### GetCompleteStats <a id="overwatch-getcompletestats">
 ##### Inputs <a id="overwatch-getcompletestats-inputs">
 ```typescript
-export type OverwatchPlatform = "pc" | "xbox" | "ps4" | "nintendo-switch";
-export type OverwatchRegion = "us" | "eu" | "asia";
+type OverwatchPlatform = "pc" | "xbox" | "ps4" | "nintendo-switch";
+type OverwatchRegion = "us" | "eu" | "asia";
 ```
 | Parameter  | Type | Required | Description |
 | ------------- | ------------- | ------------- | ------------- |
@@ -63,17 +63,17 @@ export type OverwatchRegion = "us" | "eu" | "asia";
 The GetCompleteStats function returns something im too lazy to add type def for so `Promise<any>` is what you get.
 ##### Usage <a id="overwatch-getcompletestats-usage">
 ```javascript
-const OverwatchAPI = new GameAPICenter.OverwatchAPI();
-OverwatchAPI.GetCompleteStats("pc", "us", "My_Name_Is_Jeff_From_The_OW_Team#11561").then((data) => {
+const API = new OverwatchAPI();
+API.GetCompleteStats("pc", "us", "My_Name_Is_Jeff_From_The_OW_Team#11561").then((data) => {
 // Your Code Here :D
 })
 ```
 #### GetHeroStats <a id="overwatch-getherostats">
 ##### Inputs <a id="overwatch-getherostats-inputs">
 ```typescript
-export type OverwatchPlatform = "pc" | "xbox" | "ps4" | "nintendo-switch";
-export type OverwatchRegion = "us" | "eu" | "asia";
-export type OverwatchHeros = ['ana' , 'ashe' , 'baptiste' , 'bastion' , 'brigitte' , 'doomfist' , 'dva' , 'echo' , 'genji' , 'hammond' , 'hanzo' , 'junkrat' , 'lucio' , 'mccree' , 'mei' , 'mercy' , 'moira' , 'orisa' , 'pharah' , 'reaper' , 'reinhardt' , 'roadhog' , 'sigma' , 'soldier' , 'sombra' , 'symmetra' , 'torbjorn' , 'tracer' , 'widowmaker' , 'winston' , 'zarya' , 'zenyatta'];
+type OverwatchPlatform = "pc" | "xbox" | "ps4" | "nintendo-switch";
+type OverwatchRegion = "us" | "eu" | "asia";
+type OverwatchHeros = ['ana' , 'ashe' , 'baptiste' , 'bastion' , 'brigitte' , 'doomfist' , 'dva' , 'echo' , 'genji' , 'hammond' , 'hanzo' , 'junkrat' , 'lucio' , 'mccree' , 'mei' , 'mercy' , 'moira' , 'orisa' , 'pharah' , 'reaper' , 'reinhardt' , 'roadhog' , 'sigma' , 'soldier' , 'sombra' , 'symmetra' , 'torbjorn' , 'tracer' , 'widowmaker' , 'winston' , 'zarya' , 'zenyatta'];
 ```
 | Parameter  | Type | Required | Description |
 | ------------- | ------------- | ------------- | ------------- |
@@ -85,15 +85,15 @@ export type OverwatchHeros = ['ana' , 'ashe' , 'baptiste' , 'bastion' , 'brigitt
 The GetHeroStats function returns something i was also too lazy to type def so `Promise<any>` is your best friend.
 ##### Usage <a id="overwatch-getherostats-usage">
 ```javascript
-const OverwatchAPI = new GameAPICenter.OverwatchAPI();
-OverwatchAPI.GetHeroStats("pc", "us", "My_Name_Is_Jeff_From_The_OW_Team#11561", ["genji", "hanzo"]).then((data) => {
+const API = new OverwatchAPI();
+API.GetHeroStats("pc", "us", "My_Name_Is_Jeff_From_The_OW_Team#11561", ["genji", "hanzo"]).then((data) => {
 // Your Code Here :D
 })
 ```
 ### Return Types <a id="overwatch-returntypes">
 #### OverwatchProfile <a id="overwatch-returntypes-overwatchprofile">
 ```typescript
-export type OverwatchProfile = {
+export interface OverwatchProfile {
     competitiveStats: {
         awards: {
             cards: number,
@@ -129,12 +129,10 @@ export type OverwatchProfile = {
     },
     rating: number,
     ratingIcon: string,
-    ratings: [
-        {
-            level: number, 
-            role: string, 
-            roleIcon: string
-        },
-    ];
+    ratings: {
+        level: number, 
+        role: string, 
+        roleIcon: string
+    }[],
 }
 ```
